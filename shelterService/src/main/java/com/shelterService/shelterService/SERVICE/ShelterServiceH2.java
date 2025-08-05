@@ -1,7 +1,7 @@
 package com.shelterService.shelterService.SERVICE;
 
 import com.shelterService.shelterService.ENTITY.Animal;
-import com.shelterService.shelterService.REPOSITORY.IShelterRepository;
+import com.shelterService.shelterService.REPOSITORY.AnimalsRepositoryH2;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-//@Primary
-public class ShelterService implements IShelterService{
-    private final IShelterRepository repository;
+@Primary
+public class ShelterServiceH2 implements IShelterService{
+    private final AnimalsRepositoryH2 repository;
 
-    public ShelterService(IShelterRepository repository){
+    public ShelterServiceH2(AnimalsRepositoryH2 repository){
         this.repository=repository;
     }
 

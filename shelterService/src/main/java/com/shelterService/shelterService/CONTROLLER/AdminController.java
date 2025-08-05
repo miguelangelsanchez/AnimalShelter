@@ -1,6 +1,6 @@
 package com.shelterService.shelterService.CONTROLLER;
 
-import com.shelterService.shelterService.ENTITY.Admin;
+import com.shelterService.shelterService.ENTITY.AppAdmin;
 import com.shelterService.shelterService.SERVICE.IAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -35,13 +35,13 @@ public class AdminController implements IAdminController{
 
     @Override
     @PostMapping
-    public ResponseEntity<Optional> insert(@RequestBody Admin admin) {
+    public ResponseEntity<Optional> insert(@RequestBody AppAdmin admin) {
         return ResponseEntity.ok(adminService.insert(admin));
     }
 
     @Override
     @PutMapping
-    public ResponseEntity<Optional> update(@RequestBody Admin admin) {
+    public ResponseEntity<Optional> update(@RequestBody AppAdmin admin) {
         return ResponseEntity.ok(adminService.update(admin));
     }
 

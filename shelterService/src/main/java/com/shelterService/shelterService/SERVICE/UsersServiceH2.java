@@ -1,7 +1,8 @@
 package com.shelterService.shelterService.SERVICE;
 
-import com.shelterService.shelterService.ENTITY.Animal;
-import com.shelterService.shelterService.REPOSITORY.IShelterRepository;
+import com.shelterService.shelterService.ENTITY.AppUser;
+import com.shelterService.shelterService.REPOSITORY.IShelterUsersRepository;
+import com.shelterService.shelterService.REPOSITORY.UsersRepositoryH2;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -11,60 +12,60 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-//@Primary
-public class ShelterService implements IShelterService{
-    private final IShelterRepository repository;
+@Primary
+public class UsersServiceH2 implements IUsersService{
+    private final UsersRepositoryH2 usersRepository;
 
-    public ShelterService(IShelterRepository repository){
-        this.repository=repository;
+    public UsersServiceH2(UsersRepositoryH2 usersRepository){
+        this.usersRepository=usersRepository;
     }
 
     @Override
-    public Optional<List<Animal>> readAll() {
+    public Optional<List<AppUser>> readAll() {
         try{
-            return Optional.of(repository.findAll());
+            return Optional.of(usersRepository.findAll());
         }catch(Exception ex){
             throw new ResponseStatusException(
                     HttpStatus.NOT_ACCEPTABLE,
-                    "CANT READ THE ANIMALS "+ ex.getMessage()
+                    "CANT READ THE USERS "+ ex.getMessage()
             );
         }
     }
 
     @Override
-    public Optional<Animal> readOne(int Id) {
+    public Optional<AppUser> readOne(int Id) {
         try{
-            return repository.findById(Id);
+            return usersRepository.findById(Id);
         }catch(Exception ex){
             throw new ResponseStatusException(
                     HttpStatus.NOT_ACCEPTABLE,
-                    "CANT GET THE ANIMAL "+ ex.getMessage()
+                    "CANT READ THE USER "+ ex.getMessage()
             );
         }
     }
 
     @Override
-    public Optional<Animal> insert(Animal animal) {
+    public Optional<AppUser> insert(AppUser user) {
         try{
-            repository.save(animal);
-            return Optional.of(animal);
+            usersRepository.save(user);
+            return Optional.of(user);
         }catch(Exception ex){
             throw new ResponseStatusException(
                     HttpStatus.NOT_ACCEPTABLE,
-                    "CANT SAVE THE ANIMAL "+ ex.getMessage()
+                    "CANT SAVE THE USER "+ ex.getMessage()
             );
         }
     }
 
     @Override
-    public Optional<Animal> update(Animal animal) {
+    public Optional<AppUser> update(AppUser user) {
         try{
-            repository.save(animal);
-            return Optional.of(animal);
+            usersRepository.save(user);
+            return Optional.of(user);
         }catch(Exception ex){
             throw new ResponseStatusException(
                     HttpStatus.NOT_ACCEPTABLE,
-                    "CANT UPDATE THE ANIMAL "+ ex.getMessage()
+                    "CANT UPDATE THE USER "+ ex.getMessage()
             );
         }
     }
@@ -72,11 +73,11 @@ public class ShelterService implements IShelterService{
     @Override
     public void delete(int Id) {
         try{
-            repository.deleteById(Id);
+            usersRepository.deleteById(Id);
         }catch(Exception ex){
             throw new ResponseStatusException(
                     HttpStatus.NOT_ACCEPTABLE,
-                    "CANT DELETE THE ANIMAL "+ ex.getMessage()
+                    "CANT DELETE THE USER "+ ex.getMessage()
             );
         }
     }

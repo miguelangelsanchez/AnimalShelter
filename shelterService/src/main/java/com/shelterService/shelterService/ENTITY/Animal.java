@@ -1,14 +1,20 @@
 package com.shelterService.shelterService.ENTITY;
 
-import java.util.Date;
+import jakarta.persistence.*;
 
+import java.util.Date;
+@Entity
 public class Animal {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
     private String Name;
     private int Age;
     private String Description;
     private String Img;
     private Date RegisterDate;
+
+    @Column(name = "last_update")
     private Date Update;
 
     public Animal(){}

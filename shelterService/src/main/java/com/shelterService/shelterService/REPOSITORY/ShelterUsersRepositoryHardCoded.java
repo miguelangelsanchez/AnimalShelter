@@ -1,6 +1,7 @@
+
 package com.shelterService.shelterService.REPOSITORY;
 
-import com.shelterService.shelterService.ENTITY.User;
+import com.shelterService.shelterService.ENTITY.AppUser;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -12,15 +13,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-@Primary
+//@Primary
 public class ShelterUsersRepositoryHardCoded implements IShelterUsersRepository{
-    private List<User> users;
+    private List<AppUser> users;
 
     public ShelterUsersRepositoryHardCoded(){
-        users= new ArrayList<User>();
+        users= new ArrayList<AppUser>();
 
         users.add(
-                new User.Builder()
+                new AppUser.Builder()
                         .Id(1)
                         .Name("Anahi")
                         .Age(40)
@@ -32,7 +33,7 @@ public class ShelterUsersRepositoryHardCoded implements IShelterUsersRepository{
         );
 
         users.add(
-                new User.Builder()
+                new AppUser.Builder()
                         .Id(2)
                         .Name("Luna Rubi")
                         .Age(10)
@@ -44,7 +45,7 @@ public class ShelterUsersRepositoryHardCoded implements IShelterUsersRepository{
         );
 
         users.add(
-                new User.Builder()
+                new AppUser.Builder()
                         .Id(3)
                         .Name("Venus Esmeralda")
                         .Age(10)
@@ -57,18 +58,18 @@ public class ShelterUsersRepositoryHardCoded implements IShelterUsersRepository{
     }
 
     @Override
-    public List<User> findAll() {
+    public List<AppUser> findAll() {
         return users;
     }
 
     @Override
-    public Optional<User> findById(int Id) {
+    public Optional<AppUser> findById(int Id) {
         return users.stream().filter(u->u.getId()==Id).findFirst();
     }
 
     @Override
-    public void save(User user) {
-        Optional<User> found = users.stream().filter(u->u.getId()==user.getId()).findFirst();
+    public void save(AppUser user) {
+        Optional<AppUser> found = users.stream().filter(u->u.getId()==user.getId()).findFirst();
 
         if(found.isEmpty())
             users.add(user);

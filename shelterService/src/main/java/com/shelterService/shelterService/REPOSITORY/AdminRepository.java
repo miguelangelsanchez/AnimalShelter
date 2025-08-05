@@ -1,6 +1,6 @@
 package com.shelterService.shelterService.REPOSITORY;
 
-import com.shelterService.shelterService.ENTITY.Admin;
+import com.shelterService.shelterService.ENTITY.AppAdmin;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -13,15 +13,15 @@ import java.util.Optional;
 
 @Component
 @Primary
-public class AdminRepository implements  IAdminRepository {
+public class AdminRepository implements IAdminRepository {
 
-    private final List<Admin> admins;
+    private final List<AppAdmin> admins;
 
     public AdminRepository(){
-        admins= new ArrayList<Admin>();
+        admins= new ArrayList<AppAdmin>();
 
         admins.add(
-                new Admin.Builder()
+                new AppAdmin.Builder()
                         .Id(1)
                         .User("miguel")
                         .Password("e51972")
@@ -32,7 +32,7 @@ public class AdminRepository implements  IAdminRepository {
         );
 
         admins.add(
-                new Admin.Builder()
+                new AppAdmin.Builder()
                         .Id(2)
                         .User("marco")
                         .Password("r8795")
@@ -44,18 +44,18 @@ public class AdminRepository implements  IAdminRepository {
     }
 
     @Override
-    public List<Admin> findAll() {
+    public List<AppAdmin> findAll() {
         return admins;
     }
 
     @Override
-    public Optional<Admin> findById(int Id) {
+    public Optional<AppAdmin> findById(int Id) {
         return admins.stream().filter(a->a.getId()==Id).findFirst();
     }
 
     @Override
-    public void save(Admin admin) {
-        Optional<Admin> found = admins.stream().filter(a->a.getId()==admin.getId()).findFirst();
+    public void save(AppAdmin admin) {
+        Optional<AppAdmin> found = admins.stream().filter(a->a.getId()==admin.getId()).findFirst();
 
         if(found.isEmpty())
             admins.add(admin);

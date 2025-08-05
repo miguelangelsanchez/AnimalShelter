@@ -1,6 +1,6 @@
 package com.shelterService.shelterService.SERVICE;
 
-import com.shelterService.shelterService.ENTITY.Admin;
+import com.shelterService.shelterService.ENTITY.AppAdmin;
 import com.shelterService.shelterService.REPOSITORY.IAdminRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Primary
+//@Primary
 public class AdminService implements IAdminService {
 
     private final IAdminRepository adminRepository;
@@ -21,7 +21,7 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public Optional<List<Admin>> readAll() {
+    public Optional<List<AppAdmin>> readAll() {
         try{
             return Optional.of(adminRepository.findAll());
         }catch(Exception ex){
@@ -33,7 +33,7 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public Optional<Admin> readOne(int Id) {
+    public Optional<AppAdmin> readOne(int Id) {
         try{
             return adminRepository.findById(Id);
         }catch(Exception ex){
@@ -45,7 +45,7 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public Optional<Admin> insert(Admin admin) {
+    public Optional<AppAdmin> insert(AppAdmin admin) {
         try{
             adminRepository.save(admin);
             return Optional.of(admin);
@@ -58,7 +58,7 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public Optional<Admin> update(Admin admin) {
+    public Optional<AppAdmin> update(AppAdmin admin) {
         try{
             adminRepository.save(admin);
             return Optional.of(admin);

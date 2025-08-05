@@ -1,6 +1,6 @@
 package com.shelterService.shelterService.SERVICE;
 
-import com.shelterService.shelterService.ENTITY.User;
+import com.shelterService.shelterService.ENTITY.AppUser;
 import com.shelterService.shelterService.REPOSITORY.IShelterUsersRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Primary
+//@Primary
 public class UsersService implements IUsersService{
     private IShelterUsersRepository usersRepository;
 
@@ -20,7 +20,7 @@ public class UsersService implements IUsersService{
     }
 
     @Override
-    public Optional<List<User>> readAll() {
+    public Optional<List<AppUser>> readAll() {
         try{
             return Optional.of(usersRepository.findAll());
         }catch(Exception ex){
@@ -32,7 +32,7 @@ public class UsersService implements IUsersService{
     }
 
     @Override
-    public Optional<User> readOne(int Id) {
+    public Optional<AppUser> readOne(int Id) {
         try{
             return usersRepository.findById(Id);
         }catch(Exception ex){
@@ -44,7 +44,7 @@ public class UsersService implements IUsersService{
     }
 
     @Override
-    public Optional<User> insert(User user) {
+    public Optional<AppUser> insert(AppUser user) {
         try{
             usersRepository.save(user);
             return Optional.of(user);
@@ -57,7 +57,7 @@ public class UsersService implements IUsersService{
     }
 
     @Override
-    public Optional<User> update(User user) {
+    public Optional<AppUser> update(AppUser user) {
         try{
             usersRepository.save(user);
             return Optional.of(user);

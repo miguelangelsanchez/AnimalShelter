@@ -1,27 +1,29 @@
 package com.shelterService.shelterService.ENTITY;
-
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 import java.util.Date;
-
-//@Entity
-public class User {
+@Entity
+public class AppAdmin {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
+
+    @Column(name = "username")
+    private String User;
+    private String Password;
     private String Name;
-    private int Age;
-    private String Img;
-    private String Address;
     private Date RegisterDate;
+
+    @Column(name = "last_update")
     private Date Update;
 
-    public User(){}
+    public AppAdmin(){}
 
-    public User(Builder builder){
+    public AppAdmin(Builder builder){
         this.setId(builder.Id);
+        this.setUser(builder.User);
+        this.setPassword(builder.Password);
         this.setName(builder.Name);
-        this.setAge(builder.Age);
-        this.setImg(builder.Img);
-        this.setAddress(builder.Address);
         this.setRegisterDate(builder.RegisterDate);
         this.setUpdate(builder.Update);
     }
@@ -34,36 +36,28 @@ public class User {
         Id = id;
     }
 
+    public String getUser() {
+        return User;
+    }
+
+    public void setUser(String user) {
+        User = user;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
     public String getName() {
         return Name;
     }
 
     public void setName(String name) {
         Name = name;
-    }
-
-    public int getAge() {
-        return Age;
-    }
-
-    public void setAge(int age) {
-        Age = age;
-    }
-
-    public String getImg() {
-        return Img;
-    }
-
-    public void setImg(String img) {
-        Img = img;
-    }
-
-    public String getAddress() {
-        return Address;
-    }
-
-    public void setAddress(String address) {
-        Address = address;
     }
 
     public Date getRegisterDate() {
@@ -84,10 +78,9 @@ public class User {
 
     public static class Builder{
         private int Id;
+        private String User;
+        private String Password;
         private String Name;
-        private int Age;
-        private String Img;
-        private String Address;
         private Date RegisterDate;
         private Date Update;
 
@@ -96,23 +89,18 @@ public class User {
             return this;
         }
 
+        public Builder User(String User){
+            this.User=User;
+            return this;
+        }
+
+        public Builder Password(String Password){
+            this.Password=Password;
+            return this;
+        }
+
         public Builder Name(String Name){
             this.Name=Name;
-            return this;
-        }
-
-        public Builder Age(int Age){
-            this.Age=Age;
-            return this;
-        }
-
-        public Builder Img(String Img){
-            this.Img=Img;
-            return this;
-        }
-
-        public Builder Address(String Address){
-            this.Address=Address;
             return this;
         }
 
@@ -126,8 +114,8 @@ public class User {
             return this;
         }
 
-        public User build(){
-            return new User(this);
+        public AppAdmin build(){
+            return new AppAdmin(this);
         }
     }
 }

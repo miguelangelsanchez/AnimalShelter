@@ -1,13 +1,13 @@
 package com.shelterService.shelterService.REPOSITORY;
 
-import com.shelterService.shelterService.ENTITY.Admin;
+import com.shelterService.shelterService.ENTITY.AppAdmin;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface IAdminRepository {
-    List<Admin> findAll();
-    Optional<Admin> findById(int Id);
-    void save(Admin admin);
+    List<AppAdmin> findAll();
+    Optional<AppAdmin> findById(int Id);
+    void save(AppAdmin admin);
     void deleteById(int Id);
 }

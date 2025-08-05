@@ -1,6 +1,6 @@
 package com.shelterService.shelterService.CONTROLLER;
 
-import com.shelterService.shelterService.ENTITY.User;
+import com.shelterService.shelterService.ENTITY.AppUser;
 import com.shelterService.shelterService.SERVICE.IUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -36,13 +36,13 @@ public class UsersController implements IUsersController{
 
     @Override
     @PostMapping
-    public ResponseEntity<Optional> insert(@RequestBody User user) {
+    public ResponseEntity<Optional> insert(@RequestBody AppUser user) {
         return ResponseEntity.ok(usersService.insert(user));
     }
 
     @Override
     @PutMapping
-    public ResponseEntity<Optional> update(@RequestBody User user) {
+    public ResponseEntity<Optional> update(@RequestBody AppUser user) {
         return ResponseEntity.ok(usersService.update(user));
     }
 

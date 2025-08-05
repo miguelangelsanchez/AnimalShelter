@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-@Primary
+//@Primary
 public class ShelterRepositoryHardCoded implements IShelterRepository {
 
     private List<Animal> animals;
